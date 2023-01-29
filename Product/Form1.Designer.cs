@@ -191,7 +191,7 @@ namespace Product
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 377);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(614, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(569, 150);
             this.dataGridView1.TabIndex = 13;
             // 
             // Form1
@@ -216,6 +216,7 @@ namespace Product
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Color";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

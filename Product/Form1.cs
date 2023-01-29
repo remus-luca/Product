@@ -38,11 +38,25 @@ namespace Product
             }
             SqlCommand com = new SqlCommand("exec dbo.SP_Product_Insert '"+int.Parse(textBox1.Text)+"','"+textBox2.Text+ "','" + comboBox1.Text + "','" + status+ "','" +DateTime.Parse( dateTimePicker1.Text) + "'", con);
             com.ExecuteNonQuery();
+            con.Close();
             MessageBox.Show("Successfully Saved");
-        
+            LoadAllProducts();
         
         }
 
+        void LoadAllProducts()
+        {
+            SqlCommand com = new SqlCommand("exec dbo.SP_Product_View", con);
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadAllProducts();
+        }
     }
 }
