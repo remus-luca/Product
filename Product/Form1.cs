@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Product
@@ -36,12 +30,12 @@ namespace Product
                 status = radioButton2.Text;
 
             }
-            SqlCommand comIns = new SqlCommand("exec dbo.SP_Product_Insert '"+int.Parse(textBox1.Text)+"','"+textBox2.Text+ "','" + comboBox1.Text + "','" + status+ "','" +DateTime.Parse( dateTimePicker1.Text) + "'", con);
+            SqlCommand comIns = new SqlCommand("exec dbo.SP_Product_Insert '" + int.Parse(textBox1.Text) + "','" + textBox2.Text + "','" + comboBox1.Text + "','" + status + "','" + DateTime.Parse(dateTimePicker1.Text) + "'", con);
             comIns.ExecuteNonQuery();
             con.Close();
             MessageBox.Show("Successfully Saved");
             LoadAllProducts();
-        
+
         }
 
         void LoadAllProducts()
@@ -76,6 +70,17 @@ namespace Product
             comUp.ExecuteNonQuery();
             con.Close();
             MessageBox.Show("Successfully Updated");
+            LoadAllProducts();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            con.Open();
+
+            SqlCommand comUp = new SqlCommand("exec dbo.SP_Product_Delete'" + int.Parse(textBox1.Text) + "'", con);
+            comUp.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Successfully Deleted");
             LoadAllProducts();
         }
     }
