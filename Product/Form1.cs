@@ -83,5 +83,11 @@ namespace Product
             MessageBox.Show("Successfully Deleted");
             LoadAllProducts();
         }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Form22 form = new Form22();
+            form.ShowDialog();
+
+        }
     }
 }
